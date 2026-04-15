@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
 
 class QuestWidget extends StatelessWidget {
-  const QuestWidget({super.key});
+  // Variabel untuk menerima data dari luar
+  final String title;
+  final String reward;
+
+  const QuestWidget({
+    super.key,
+    required this.title,
+    required this.reward,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        
+        // Aksi ketika quest ditekan
       },
       child: Ink(
-        padding: .all(12),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: Colors.grey.withAlpha(14),
-          borderRadius: .circular(14),
-          border: .all(color: Colors.black.withAlpha(20)),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: Colors.black.withAlpha(20)),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withAlpha(10),
@@ -30,19 +38,24 @@ class QuestWidget extends StatelessWidget {
               height: 40,
               decoration: BoxDecoration(
                 color: Colors.purpleAccent.withAlpha(12),
-                borderRadius: .circular(12)
+                borderRadius: BorderRadius.circular(12)
               ),
-              child: Icon(Icons.task_alt, color: Colors.purpleAccent,),
+              child: const Icon(Icons.task_alt, color: Colors.purpleAccent,),
             ),
+            const SizedBox(width: 12),
             Expanded(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Kalahkan 3 Koruptor"),
-                  SizedBox(height: 2,),
-                  Text("Reward:20+ ompreng MBG",
-                  style: TextStyle(
-                    fontWeight: .bold
-                  ),
+                  // Menampilkan judul dari variabel
+                  Text(title),
+                  const SizedBox(height: 2,),
+                  // Menampilkan reward dari variabel
+                  Text(
+                    reward,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold
+                    ),
                   ),
                 ],
               )
